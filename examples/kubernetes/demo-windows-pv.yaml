@@ -1,0 +1,43 @@
+
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: pvc-filestore
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Gi
+  volumeName: pv-filestore
+  storageClassName: ""
+---
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: pv-filestore
+spec:
+  accessModes:
+    - ReadWriteMany
+  capacity:
+    storage: 1Gi
+  persistentVolumeReclaimPolicy: Retain #If set as "Delete" file share would be removed after pvc deletion
+  csi:
+    driver: gcp-filestore-csi-driver
+    readOnly: false
+    volumeHandle: arbitrary-filestore-volume
+    volumeAttributes:
+      attrIP: e2e-test-ramosalex-windows-node-group-tz6r
+      attrVolume: Share
+    nodePublishSecretRef:
+      name: smb-secret
+      namespace: default
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: smb-secret
+type: Opaque
+data:
+  smbUser: ZTJlLXRlc3QtcmFtb3NhbGV4LXdpbmRvd3Mtbm9kZS1ncm91cC10ejZyXHNtYnVzZXI=
+  smbPassword: WiM/WG53eixdJmg3Pj8tXQ==

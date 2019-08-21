@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nettest
+spec:
+  nodeName: e2e-test-ramosalex-windows-node-group-tz6r
+  containers:
+   - name: nettest
+     image: e2eteam/nettest:1.0
+     volumeMounts:
+         name: pvfs
+       - mountPath: /share
+  volumes:
+   - name: pvfs
+     persistentVolumeClaim:
+       claimName: pvc-filestore
