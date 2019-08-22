@@ -41,3 +41,11 @@ type: Opaque
 data:
   smbUser: ZTJlLXRlc3QtcmFtb3NhbGV4LXdpbmRvd3Mtbm9kZS1ncm91cC10ejZyXHNtYnVzZXI=
   smbPassword: WiM/WG53eixdJmg3Pj8tXQ==
+---
+  apiVersion: storage.k8s.io/v1beta1
+  kind: CSIDriver
+  metadata:
+    name: gcp-filestore-csi-driver
+  spec:
+    attachRequired: false
+    podInfoOnMount: true
