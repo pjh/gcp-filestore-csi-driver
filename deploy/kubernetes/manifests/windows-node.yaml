@@ -19,11 +19,11 @@ spec:
       containers:
         - name: csi-driver-registrar
           imagePullPolicy: Always
-          image: gcr.io/alexion/csi-node-driver-registrar:1809
+          image: gcr.io/peterhornyack-prod-no-enforcer/csi-node-driver-registrar:1809
           args:
             - "--v=5"
             - "--csi-address=unix:///csi/csi.sock"
-            - "--kubelet-registration-path=/var/lib/kubelet/plugins/filestore.csi.storage.gke.io/csi.sock"
+            - "--kubelet-registration-path=C:\\var\\lib\\kubelet\\plugins\\filestore.csi.storage.gke.io\\csi.sock"
           env:
             - name: KUBE_NODE_NAME
               valueFrom:

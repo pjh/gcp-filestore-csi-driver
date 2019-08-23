@@ -27,7 +27,7 @@ spec:
     readOnly: false
     volumeHandle: arbitrary-filestore-volume
     volumeAttributes:
-      attrIP: e2e-test-ramosalex-windows-node-group-tz6r
+      attrIP: e2e-test-peterhornyack-TODO
       attrVolume: Share
     nodePublishSecretRef:
       name: smb-secret

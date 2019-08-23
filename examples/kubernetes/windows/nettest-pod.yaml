@@ -3,7 +3,7 @@ kind: Pod
 metadata:
   name: nettest
 spec:
-  nodeName: e2e-test-ramosalex-windows-node-group-tz6r
+  nodeName: e2e-test-peterhornyack-windows-node-group-1cnn
   containers:
    - name: nettest
      image: e2eteam/nettest:1.0
